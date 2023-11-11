@@ -1,0 +1,194 @@
+<?php
+
+class DBHelper {
+    private $con;
+    public function __construct() {
+        $host = 'localhost';
+		$user = 'root';
+		$pass = "";
+		$dbname = 'attendanceapp';
+
+		$this->con = mysqli_connect($host,$user,$pass,$dbname);
+		if (!$this->con) {
+			die("Erron");
+		}
+    }
+    public function adminLogin($data) {
+        $username = $data["admin_email"];
+        $password = $data["admin_pass"];
+        $sql = "SELECT * FROM admin_info WHERE admin_email='$username' && admin_pass='$password'";
+        if(mysqli_query($this->con,$sql)){
+			$info = mysqli_query($this->con,$sql);
+			if($info){
+				header("location:DashBoard.php");
+				$admin_data = mysqli_fetch_assoc($info);
+				session_start();
+				$_SESSION['admin_name']=$admin_data['admin_name'];
+                setcookie('admin_name',$admin_data['admin_name'],time()+60*60*24*30);
+			}
+		}
+    }
+    public function isUserExist($data){
+        $username = $data["admin_email"];
+        $sql = "SELECT * FROM admin_info WHERE admin_email='$username'";
+        if(mysqli_query($this->con,$sql)){
+            $info = mysqli_query($this->con,$sql);
+            return $info;
+        }
+    }
+    public function adminlogout(){
+		unset($_SESSION['admin_name']);
+        setcookie('admin_name',$_SESSION['admin_name'],30);
+		header("location: index.php");
+	}
+    public function addClass($data) {
+        $session = $data['session'];
+        $coursecode = $data['coursecode'];
+        $sql = "INSERT INTO classes(session,coursecode) VALUE('$session','$coursecode')";
+        if(mysqli_query($this->con,$sql)) {
+            return "Class Added Successfully";
+        }
+    }
+    public function viewClass() {
+        $sql = "SELECT * FROM classes";
+        if(mysqli_query($this->con,$sql)) {
+            $cls = mysqli_query($this->con,$sql);
+            return $cls;
+        }
+    }
+    public function transferStudent($data) {
+        $tbl_name = $data['coursecode'].$data['session'];
+        $session = $data['session'];
+        $sql = "INSERT INTO `$tbl_name` (roll,name) SELECT roll,name FROM `$session`";
+        if(mysqli_query($this->con,$sql)) {
+            return "Datas transfer Successfully";
+        }
+
+    }
+    
+    public function deleteClass($id) {
+        $sql = "DELETE FROM classes WHERE id = $id";
+        if(mysqli_query($this->con,$sql)) {
+            return "Class Deleted Successfully";
+        }
+    }
+    public function createTable($data) {
+        $tbl_name = $data['coursecode'].$data['session'];
+        $sql = "CREATE TABLE `$tbl_name` (
+            `id` INT(100) NOT NULL AUTO_INCREMENT , 
+            `Roll` INT(100) NOT NULL , 
+            `Name` TEXT NOT NULL , 
+            `CT1` INT(2) NOT NULL , 
+            `CT2` INT(2) NOT NULL , 
+            `CT3` INT(2) NOT NULL , 
+            `Percentage` INT(3) NOT NULL ,
+            `Mark` INT(2) NOT NULL ,
+            `Best1` INT(2) NOT NULL ,
+            `Best2` INT(2) NOT NULL ,
+            `Total` INT(2) NOT NULL ,
+            PRIMARY KEY (`id`))";
+        if(mysqli_query($this->con,$sql)) {
+            return "Table Added Successfully";
+        }
+    }
+    public function dropTable($coursescode,$session) {
+        $tbl_name = $coursescode.$session;
+        $sql = "DROP TABLE `$tbl_name`";
+        if(mysqli_query($this->con,$sql)) {
+            return "Class Deleted Successfully";
+        }
+    }
+    public function addColumn($tbl_name,$date) {
+        $sql = "ALTER TABLE `$tbl_name` ADD `$date` TEXT DEFAULT 'A'";
+        if(mysqli_query($this->con,$sql)) {
+            return "Table Added Successfully";
+        }else{
+            return "Table Added UnSuccessfully";
+        }
+    }
+    public function viewTable($tbl_name) {
+        $sql = "SELECT * FROM `$tbl_name`";
+        if(mysqli_query($this->con,$sql)) {
+            $data = mysqli_query($this->con,$sql);
+            return $data;
+        }
+    }
+    public function viewTableName($tbl_name) {
+        $sql = "SELECT column_name AS cl_mn
+        FROM information_schema.columns 
+        WHERE table_name = '$tbl_name'";
+        if(mysqli_query($this->con,$sql)) {
+            $data = mysqli_query($this->con,$sql);
+            return $data;
+        }
+    }
+    public function viewCourseCode(){
+        $sql = "SELECT * FROM course_code";
+        if(mysqli_query($this->con,$sql)){
+            $cc = mysqli_query($this->con,$sql);
+            return $cc;
+        }
+    }
+    public function takeAttendance($tbl_name,$date,$roll){
+        $sql = "UPDATE `$tbl_name` SET `$date` = 'P' WHERE Roll = $roll";
+        if(mysqli_query($this->con,$sql)){
+            return "Attendance Take Successfuly";
+        }
+    }
+    public function updateBest($tbl_name,$per,$mark,$b1,$b2,$total,$roll){
+        $sql = "UPDATE `$tbl_name` SET `Percentage` = $per,`Mark` = $mark,`Best1` = $b1,`Best2` = $b2,`Total` = $total WHERE Roll = $roll";
+        if(mysqli_query($this->con,$sql)){
+            return "Best Mark Update Successfuy";
+        }
+    }
+    public function DataViewById($tbl_name,$id){
+        $sql = "SELECT * FROM `$tbl_name` WHERE id=$id";
+        if(mysqli_query($this->con,$sql)){
+            $data = mysqli_query($this->con,$sql);
+            $datas = mysqli_fetch_assoc($data);
+            return $datas;
+        }
+    }
+    public function deleteById($tbl_name,$id){
+        $sql = "DELETE FROM `$tbl_name` WHERE id=$id";
+        if(mysqli_query($this->con,$sql)){
+            return "Delete Successfully";
+        }
+    }
+    public function addStudent($tbl_name,$roll,$name){
+        $sql = "INSERT INTO `$tbl_name`(Roll,Name) VALUES($roll,'$name')";
+        if(mysqli_query($this->con,$sql)){
+            return "Student Add Successfully";
+        }
+    }
+    public function UpdateStudent($tbl_name,$roll,$name,$id){
+        $sql = "UPDATE `$tbl_name` SET `Roll` = $roll,`Name` = '$name' WHERE id = $id";
+        if(mysqli_query($this->con,$sql)){
+            return "Student Update Successfully";
+        }
+    }
+
+    public function updateAttendanceData($tbl_name,$col,$cd,$id){
+        $sql = "UPDATE `$tbl_name` SET `$col` = '$cd' WHERE id = $id";
+        if(mysqli_query($this->con,$sql)){
+            return "Update Successfuy";
+        }
+    }
+
+    public function updateCtMark($tbl_name,$ct1,$ct2,$ct3,$id){
+        $sql = "UPDATE `$tbl_name` SET `CT1` = $ct1,`CT2` = $ct2,`CT3` = $ct3 WHERE id = $id";
+        if(mysqli_query($this->con,$sql)){
+            return "Update Successfuy";
+        }
+    }
+    public function getCourseTitle($cc){
+        $sql = "SELECT ct FROM course_code WHERE cc = '$cc'";
+        if(mysqli_query($this->con,$sql)){
+            $data = mysqli_query($this->con,$sql);
+            $datas = mysqli_fetch_assoc($data);
+            return $datas;
+        }
+    }
+}
+
+?>
