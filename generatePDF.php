@@ -6,7 +6,7 @@ class PDF extends FPDF
 {
 function Header()
 {
-    $this->Image('logo.png',100,6,10);
+    $this->Image('image/logo.png',100,6,10);
     $this->Ln(5);
     $this->SetFont('Arial','B',10);
     $this->Cell(80);
