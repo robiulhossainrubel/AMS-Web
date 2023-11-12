@@ -10,21 +10,6 @@ if(isset($_POST['add_cls'])){
 <h2 style="text-decoration: none;">Add Class</h2>
 
 <form class="form" action="" method="post">
-    <label for="year">Year:</label><br>
-    <select class="form-control" name="year" required>
-        <option selected value="">Select Year</option>
-        <option value="1st_Year">1st Year</option>
-        <option value="2nd_Year">2nd Year</option>
-        <option value="3rd_Year">3rd Year</option>
-        <option value="4th_Year">4th Year</option>
-        
-    </select><br>
-    <label for="semester">Semester:</label><br>
-    <select class="form-control" name="semester" required>
-        <option selected value="">Select Semester</option>
-        <option value="1st_Semester">1st Semester</option>
-        <option value="2nd_Semester">2nd Semester</option>
-    </select><br>
     <label for="session">Session:</label><br>
     <select class="form-control" name="session" required>
         <option selected value="">Select Session</option>
