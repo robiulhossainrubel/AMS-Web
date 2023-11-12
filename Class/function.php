@@ -73,10 +73,8 @@ class DBHelper {
         setcookie('department',$_SESSION['department'],30);
 		header("location: index.php");
 	}
-    public function addClass($data) {
-        $session = $data['session'];
-        $coursecode = $data['coursecode'];
-        $sql = "INSERT INTO classes(session,coursecode) VALUE('$session','$coursecode')";
+    public function addClass($coursecode,$session,$email,$department) {
+        $sql = "INSERT INTO classes(session,coursecode,email,department) VALUE('$session','$coursecode','$email','$department')";
         if(mysqli_query($this->con,$sql)) {
             return "Class Added Successfully";
         }
@@ -88,9 +86,8 @@ class DBHelper {
             return $cls;
         }
     }
-    public function transferStudent($data) {
-        $tbl_name = $data['coursecode'].$data['session'];
-        $session = $data['session'];
+    public function transferStudent($coursecode,$session) {
+        $tbl_name = $coursecode.$session;
         $sql = "INSERT INTO `$tbl_name` (roll,name) SELECT roll,name FROM `$session`";
         if(mysqli_query($this->con,$sql)) {
             return "Datas transfer Successfully";
@@ -104,8 +101,8 @@ class DBHelper {
             return "Class Deleted Successfully";
         }
     }
-    public function createTable($data) {
-        $tbl_name = $data['coursecode'].$data['session'];
+    public function createTable($coursecode,$session) {
+        $tbl_name = $coursecode.$session;
         $sql = "CREATE TABLE `$tbl_name` (
             `id` INT(100) NOT NULL AUTO_INCREMENT , 
             `Roll` INT(100) NOT NULL , 
