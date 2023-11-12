@@ -1,5 +1,16 @@
-<?php include_once("include/head.php"); ?>
+<?php
 
+include("Class/function.php");
+$obj = new DBHelper();
+$msg = "";
+if(isset($_POST['signup'])){
+    $msg = $obj->registerAdmin($_POST);
+}
+
+?>
+
+
+<?php include_once("include/head.php"); ?>
 <body class="bg-primary">
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
@@ -10,9 +21,10 @@
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header">
                                     <h3 class="text-center font-weight-light my-4">Create Account</h3>
+                                    <p class="text-center font-weight-light my-4"><?php echo $msg; ?></p>
                                 </div>
                                 <div class="card-body">
-                                    <form>
+                                    <form action="" method="POST">
                                         <div class="form-row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
@@ -61,7 +73,7 @@
                                                 <div class="form-group">
                                                     <label class="small mb-1" for="inputPassword">Password</label>
                                                     <input class="form-control py-4" id="inputPassword" type="password"
-                                                        placeholder="Enter password" required/>
+                                                        placeholder="Enter password" name="pass" required/>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -69,11 +81,11 @@
                                                     <label class="small mb-1" for="inputConfirmPassword">Confirm
                                                         Password</label>
                                                     <input class="form-control py-4" id="inputConfirmPassword"
-                                                        type="password" placeholder="Confirm password" required/>
+                                                        type="password" placeholder="Confirm password" name="cpass" required/>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group mt-4 mb-0"><input type="submit" class="btn btn-primary btn-block" value="Create Account"></div>
+                                        <div class="form-group mt-4 mb-0"><input type="submit" class="btn btn-primary btn-block" value="Create Account" name="signup"></div>
                                     </form>
                                 </div>
                                 <div class="card-footer text-center">

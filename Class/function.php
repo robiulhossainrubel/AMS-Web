@@ -14,9 +14,9 @@ class DBHelper {
 		}
     }
     public function adminLogin($data) {
-        $username = $data["email"];
+        $email = $data["email"];
         $password = $data["pass"];
-        $sql = "SELECT * FROM admin_info WHERE email='$username' && pass='$password'";
+        $sql = "SELECT * FROM admin_info WHERE email='$email' && pass='$password'";
         if(mysqli_query($this->con,$sql)){
 			$info = mysqli_query($this->con,$sql);
 			if($info){
@@ -28,12 +28,32 @@ class DBHelper {
 			}
 		}
     }
-    public function isUserExist($data){
-        $email = $data["email"];
+    public function isUserExist($email){
         $sql = "SELECT * FROM admin_info WHERE email='$email'";
         if(mysqli_query($this->con,$sql)){
             $info = mysqli_query($this->con,$sql);
             return $info;
+        }
+    }
+    public function registerAdmin($data){
+        $name = $data["name"];
+        $depatrment = $data["dept"];
+        $email = $data["email"];
+        $password = $data["pass"];
+        $cpass = $data["cpass"];
+        if($cpass!=$password){
+            return "Password Not Match";
+        }elseif($this->isUserExist($email)){
+            return "Email Already Used";
+        }else{
+            //$password = md5($password);
+            $sql = "INSERT INTO admin_info(email,name,department,pass) VALUES('$email','$name','$depatrment','$password')";
+            if(mysqli_query($this->con,$sql)){
+                header("location:DashBoard.php");
+				session_start();
+				$_SESSION['name']=$name;
+                setcookie('name',$name,time()+60*60*24*30);
+            }
         }
     }
     public function adminlogout(){
