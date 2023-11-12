@@ -7,7 +7,7 @@
             $this->con = $db->connect();
         }
         public function adminLogin($email,$password) {
-            $sql = "SELECT * FROM admin_info WHERE admin_email='$email' && admin_pass='$password'";
+            $sql = "SELECT * FROM admin_info WHERE email='$email' && pass='$password'";
             if(mysqli_query($this->con,$sql)){
                 $data = mysqli_query($this->con,$sql);
                 $info = mysqli_fetch_assoc($data);
