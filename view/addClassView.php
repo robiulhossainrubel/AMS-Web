@@ -3,7 +3,7 @@ $cc = $obj->viewCourse($_COOKIE['department']);
 if(isset($_POST['add_cls'])){
     $msg = $obj->addClass($_POST['coursecode'],$_POST['session'],$_COOKIE['email'],$_COOKIE['department']);
     $msg2 = $obj->createTable($_POST['coursecode'],$_POST['session']);
-    $msg3 = $obj->transferStudent($_POST['coursecode'],$_POST['session']);
+    $msg3 = $obj->transferStudent($_POST['coursecode'],$_POST['session'],$_COOKIE['department']);
 }
 ?>
 

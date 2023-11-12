@@ -14,8 +14,8 @@
                 return $info;
             }
         }
-        public function viewClass() {
-            $sql = "SELECT * FROM classes";
+        public function viewClass($email) {
+            $sql = "SELECT * FROM classes WHERE email='$email'";
             if(mysqli_query($this->con,$sql)) {
                 $cls = mysqli_query($this->con,$sql);
                 return $cls;

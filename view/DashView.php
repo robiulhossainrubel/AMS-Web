@@ -1,6 +1,6 @@
 <?php
 
-$cls = $obj->viewClass();
+$cls = $obj->viewClass($_COOKIE['email']);
 
 if(isset($_GET['id']) and isset( $_GET['session']) and isset($_GET['coursecode'])) {
     $id = $_GET['id'];

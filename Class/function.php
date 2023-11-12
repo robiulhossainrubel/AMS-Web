@@ -79,16 +79,16 @@ class DBHelper {
             return "Class Added Successfully";
         }
     }
-    public function viewClass() {
-        $sql = "SELECT * FROM classes";
+    public function viewClass($email) {
+        $sql = "SELECT * FROM classes WHERE email='$email'";
         if(mysqli_query($this->con,$sql)) {
             $cls = mysqli_query($this->con,$sql);
             return $cls;
         }
     }
-    public function transferStudent($coursecode,$session) {
+    public function transferStudent($coursecode,$session,$department) {
         $tbl_name = $coursecode.$session;
-        $sql = "INSERT INTO `$tbl_name` (roll,name) SELECT roll,name FROM `$session`";
+        $sql = "INSERT INTO `$tbl_name` (roll,name) SELECT roll,name FROM `students` WHERE department='$department' && session='$session'";
         if(mysqli_query($this->con,$sql)) {
             return "Datas transfer Successfully";
         }
