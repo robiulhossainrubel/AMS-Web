@@ -1,5 +1,5 @@
 <?php
-$cc = $obj->viewCourseCode();
+$cc = $obj->viewCourse($_COOKIE['department']);
 if(isset($_POST['add_cls'])){
     $msg = $obj->addClass($_POST);
     $msg2 = $obj->createTable($_POST);

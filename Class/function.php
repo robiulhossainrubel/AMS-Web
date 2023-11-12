@@ -41,7 +41,7 @@ class DBHelper {
     }
     public function registerAdmin($data){
         $name = $data["name"];
-        $depatrment = $data["dept"];
+        $department = $data["dept"];
         $email = $data["email"];
         $password = $data["pass"];
         $cpass = $data["cpass"];
@@ -51,16 +51,16 @@ class DBHelper {
             return "Email Already Used";
         }else{
             //$password = md5($password);
-            $sql = "INSERT INTO admin_info(email,name,department,pass) VALUES('$email','$name','$depatrment','$password')";
+            $sql = "INSERT INTO admin_info(email,name,department,pass) VALUES('$email','$name','$department','$password')";
             if(mysqli_query($this->con,$sql)){
                 header("location:DashBoard.php");
 				session_start();
 				$_SESSION['name']=$name;
                 $_SESSION['email']=$email;
-                $_SESSION['department']=$depatrment;
+                $_SESSION['department']=$department;
                 setcookie('name',$name,time()+60*60*24*30);
                 setcookie('email',$email,time()+60*60*24*30);
-                setcookie('department',$depatrment,time()+60*60*24*30);
+                setcookie('department',$department,time()+60*60*24*30);
             }
         }
     }
@@ -154,8 +154,8 @@ class DBHelper {
             return $data;
         }
     }
-    public function viewCourseCode(){
-        $sql = "SELECT * FROM course";
+    public function viewCourse($department){
+        $sql = "SELECT * FROM course WHERE department = '$department'";
         if(mysqli_query($this->con,$sql)){
             $cc = mysqli_query($this->con,$sql);
             return $cc;
