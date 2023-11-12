@@ -155,7 +155,7 @@ class DBHelper {
         }
     }
     public function viewCourseCode(){
-        $sql = "SELECT * FROM course_code";
+        $sql = "SELECT * FROM course";
         if(mysqli_query($this->con,$sql)){
             $cc = mysqli_query($this->con,$sql);
             return $cc;
@@ -214,7 +214,7 @@ class DBHelper {
         }
     }
     public function getCourseTitle($cc){
-        $sql = "SELECT ct FROM course_code WHERE cc = '$cc'";
+        $sql = "SELECT ct FROM course WHERE cc = '$cc'";
         if(mysqli_query($this->con,$sql)){
             $data = mysqli_query($this->con,$sql);
             $datas = mysqli_fetch_assoc($data);
