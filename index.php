@@ -5,8 +5,8 @@ if(isset($_POST['login'])){
     $obj->adminLogin($_POST);
 }
     session_start();
-    if(isset($_SESSION['admin_name']) || isset($_COOKIE['admin_name'])){
-        $name = $_COOKIE['admin_name'];
+    if(isset($_SESSION['name']) || isset($_COOKIE['name'])){
+        $name = $_COOKIE['name'];
         if($name){
             header("location:DashBoard.php");
         }
@@ -30,11 +30,11 @@ if(isset($_POST['login'])){
                                         <form action="" method="post">
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                                <input class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Enter email address" name="admin_email" />
+                                                <input class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Enter email address" name="email" />
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputPassword">Password</label>
-                                                <input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" name="admin_pass"/>
+                                                <input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" name="pass"/>
                                             </div>
                                             <div class="form-group">
                                                 <div class="custom-control custom-checkbox">

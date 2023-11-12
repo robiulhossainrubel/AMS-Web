@@ -14,31 +14,31 @@ class DBHelper {
 		}
     }
     public function adminLogin($data) {
-        $username = $data["admin_email"];
-        $password = $data["admin_pass"];
-        $sql = "SELECT * FROM admin_info WHERE admin_email='$username' && admin_pass='$password'";
+        $username = $data["email"];
+        $password = $data["pass"];
+        $sql = "SELECT * FROM admin_info WHERE email='$username' && pass='$password'";
         if(mysqli_query($this->con,$sql)){
 			$info = mysqli_query($this->con,$sql);
 			if($info){
 				header("location:DashBoard.php");
 				$admin_data = mysqli_fetch_assoc($info);
 				session_start();
-				$_SESSION['admin_name']=$admin_data['admin_name'];
-                setcookie('admin_name',$admin_data['admin_name'],time()+60*60*24*30);
+				$_SESSION['name']=$admin_data['name'];
+                setcookie('name',$admin_data['name'],time()+60*60*24*30);
 			}
 		}
     }
     public function isUserExist($data){
-        $username = $data["admin_email"];
-        $sql = "SELECT * FROM admin_info WHERE admin_email='$username'";
+        $email = $data["email"];
+        $sql = "SELECT * FROM admin_info WHERE email='$email'";
         if(mysqli_query($this->con,$sql)){
             $info = mysqli_query($this->con,$sql);
             return $info;
         }
     }
     public function adminlogout(){
-		unset($_SESSION['admin_name']);
-        setcookie('admin_name',$_SESSION['admin_name'],30);
+		unset($_SESSION['name']);
+        setcookie('name',$_SESSION['name'],30);
 		header("location: index.php");
 	}
     public function addClass($data) {

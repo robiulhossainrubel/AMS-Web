@@ -2,7 +2,7 @@
 include("Class/function.php");
 $obj = new DBHelper();
 session_start();
-    $name = $_COOKIE['admin_name'];
+    $name = $_COOKIE['name'];
     if($name==NULL){
         header("location:index.php");
     }
