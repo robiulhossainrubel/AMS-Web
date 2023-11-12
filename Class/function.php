@@ -24,7 +24,11 @@ class DBHelper {
 				$admin_data = mysqli_fetch_assoc($info);
 				session_start();
 				$_SESSION['name']=$admin_data['name'];
+                $_SESSION['email']=$admin_data['email'];
+                $_SESSION['department']=$admin_data['department'];
                 setcookie('name',$admin_data['name'],time()+60*60*24*30);
+                setcookie('email',$admin_data['email'],time()+60*60*24*30);
+                setcookie('department',$admin_data['department'],time()+60*60*24*30);
 			}
 		}
     }
@@ -52,13 +56,21 @@ class DBHelper {
                 header("location:DashBoard.php");
 				session_start();
 				$_SESSION['name']=$name;
+                $_SESSION['email']=$email;
+                $_SESSION['department']=$depatrment;
                 setcookie('name',$name,time()+60*60*24*30);
+                setcookie('email',$email,time()+60*60*24*30);
+                setcookie('department',$depatrment,time()+60*60*24*30);
             }
         }
     }
     public function adminlogout(){
 		unset($_SESSION['name']);
+        unset($_SESSION['email']);
+        unset($_SESSION['department']);
         setcookie('name',$_SESSION['name'],30);
+        setcookie('email',$_SESSION['email'],30);
+        setcookie('department',$_SESSION['department'],30);
 		header("location: index.php");
 	}
     public function addClass($data) {
