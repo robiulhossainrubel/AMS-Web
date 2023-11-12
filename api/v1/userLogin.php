@@ -7,8 +7,9 @@
             $user = $db->adminLogin($_POST['email'], $_POST['password']);
             if($user){
                 $response['error'] = false;
-                $response['email'] = $user['email'];
                 $response['name'] = $user['name'];
+                $response['email'] = $user['email'];
+                $response['department'] = $user['department'];
             }else{
                 $response['error'] = true;
                 $response['message'] = 'Invaid Username or Password';
