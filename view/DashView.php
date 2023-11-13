@@ -20,6 +20,7 @@ if(isset($_GET['id']) and isset( $_GET['session']) and isset($_GET['coursecode']
                     <div class="col mr-2">
                     <p><a href="classManage.php?session=<?php echo $row['session']; ?>&coursecode=<?php echo $row['coursecode']; ?>">
                     <span style="font-size: 40px;"><?php echo $row['session'] ?></span><br>
+                    <span style="font-size: 30px;"><?php echo $row['ct'] ?></span><br>
                     <span style="font-size: 20px;"><?php echo $row['coursecode'] ?></span><br>
                 </a></p>
             <div>

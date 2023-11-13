@@ -10,6 +10,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $index['id'] = $row[0];
             $index['session'] = $row[1];
             $index['coursecode'] = $row[2];
+            $index['ct'] = $row[3];
             array_push($response['data'], $index);
         }
     }

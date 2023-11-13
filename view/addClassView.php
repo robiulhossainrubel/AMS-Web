@@ -1,7 +1,9 @@
 <?php
 $cc = $obj->viewCourse($_COOKIE['department']);
+$ss = $obj->viewSession($_COOKIE['department']);
 if(isset($_POST['add_cls'])){
-    $msg = $obj->addClass($_POST['coursecode'],$_POST['session'],$_COOKIE['email'],$_COOKIE['department']);
+    $ct = $obj->getCourseTitle($_POST['coursecode']);
+    $msg = $obj->addClass($_POST['coursecode'],$_POST['session'],$_COOKIE['email'],$_COOKIE['department'],$ct['ct']);
     $msg2 = $obj->createTable($_POST['coursecode'],$_POST['session'],$_COOKIE['email'],$_COOKIE['department']);
     $msg3 = $obj->transferStudent($_POST['coursecode'],$_POST['session'],$_COOKIE['email'],$_COOKIE['department']);
 }
@@ -13,10 +15,9 @@ if(isset($_POST['add_cls'])){
     <label for="session">Session:</label><br>
     <select class="form-control" name="session" required>
         <option selected value="">Select Session</option>
-        <option value="2018-2019">2018-2019</option>
-        <option value="2019-2020">2019-2020</option>
-        <option value="2020-2021">2020-2021</option>
-        <option value="2021-2022">2021-2022</option>
+        <?php while($s = mysqli_fetch_assoc($ss)) { ?>
+		<option value="<?php echo $s['session']; ?>"><?php echo $s['session']; ?></option>
+		<?php } ?>
     </select><br>
     <label for="coursecode">Course Code:</label><br>
     <select class="form-control" name="coursecode" required>

@@ -73,8 +73,8 @@ class DBHelper {
         setcookie('department',$_SESSION['department'],30);
 		header("location: index.php");
 	}
-    public function addClass($coursecode,$session,$email,$department) {
-        $sql = "INSERT INTO classes(session,coursecode,email,department) VALUE('$session','$coursecode','$email','$department')";
+    public function addClass($coursecode,$session,$email,$department,$ct) {
+        $sql = "INSERT INTO classes(session,coursecode,ct,email,department) VALUE('$session','$coursecode','$ct','$email','$department')";
         if(mysqli_query($this->con,$sql)) {
             return "Class Added Successfully";
         }
@@ -156,6 +156,13 @@ class DBHelper {
         if(mysqli_query($this->con,$sql)){
             $cc = mysqli_query($this->con,$sql);
             return $cc;
+        }
+    }
+    public function viewSession($department) {
+        $sql = "SELECT DISTINCT session FROM students WHERE department = '$department'";
+        if(mysqli_query($this->con,$sql)){
+            $session = mysqli_query($this->con,$sql);
+            return $session;
         }
     }
     public function takeAttendance($tbl_name,$date,$roll){
