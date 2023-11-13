@@ -2,7 +2,7 @@
 include("Class/function.php");
 $obj = new DBHelper();
 if(isset($_POST['login'])){
-    $obj->adminLogin($_POST);
+    $obj->teacherLogin($_POST);
 }
     session_start();
     if(isset($_SESSION['name']) || isset($_COOKIE['name'])){

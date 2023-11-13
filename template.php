@@ -8,7 +8,7 @@ session_start();
     }
 if(isset($_GET['adminlogout'])){
     if($_GET['adminlogout']=='logout'){
-        $obj->adminlogout();
+        $obj->teacherLogout();
     }
 }
 ?>

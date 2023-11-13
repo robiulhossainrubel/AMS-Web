@@ -4,7 +4,7 @@ include("Class/function.php");
 $obj = new DBHelper();
 $msg = "";
 if(isset($_POST['signup'])){
-    $msg = $obj->registerAdmin($_POST);
+    $msg = $obj->registerTeacher($_POST);
 }
 
 ?>

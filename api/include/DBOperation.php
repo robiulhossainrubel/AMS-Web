@@ -6,7 +6,7 @@
             $db=new DBConnect();
             $this->con = $db->connect();
         }
-        public function adminLogin($email,$password) {
+        public function teacherLogin($email,$password) {
             $sql = "SELECT * FROM teacher_info WHERE email='$email' && pass='$password'";
             if(mysqli_query($this->con,$sql)){
                 $data = mysqli_query($this->con,$sql);

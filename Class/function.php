@@ -13,7 +13,7 @@ class DBHelper {
 			die("Erron");
 		}
     }
-    public function adminLogin($data) {
+    public function teacherLogin($data) {
         $email = $data["email"];
         $password = $data["pass"];
         $sql = "SELECT * FROM teacher_info WHERE email='$email' && pass='$password'";
@@ -21,14 +21,14 @@ class DBHelper {
 			$info = mysqli_query($this->con,$sql);
 			if($info){
 				header("location:DashBoard.php");
-				$admin_data = mysqli_fetch_assoc($info);
+				$teacher_data = mysqli_fetch_assoc($info);
 				session_start();
-				$_SESSION['name']=$admin_data['name'];
-                $_SESSION['email']=$admin_data['email'];
-                $_SESSION['department']=$admin_data['department'];
-                setcookie('name',$admin_data['name'],time()+60*60*24*30);
-                setcookie('email',$admin_data['email'],time()+60*60*24*30);
-                setcookie('department',$admin_data['department'],time()+60*60*24*30);
+				$_SESSION['name']=$teacher_data['name'];
+                $_SESSION['email']=$teacher_data['email'];
+                $_SESSION['department']=$teacher_data['department'];
+                setcookie('name',$teacher_data['name'],time()+60*60*24*30);
+                setcookie('email',$teacher_data['email'],time()+60*60*24*30);
+                setcookie('department',$teacher_data['department'],time()+60*60*24*30);
 			}
 		}
     }
@@ -39,7 +39,7 @@ class DBHelper {
             return $info;
         }
     }
-    public function registerAdmin($data){
+    public function registerTeacher($data){
         $name = $data["name"];
         $department = $data["dept"];
         $email = $data["email"];
@@ -64,7 +64,7 @@ class DBHelper {
             }
         }
     }
-    public function adminlogout(){
+    public function teacherLogout(){
 		unset($_SESSION['name']);
         unset($_SESSION['email']);
         unset($_SESSION['department']);
