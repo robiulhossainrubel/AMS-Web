@@ -166,6 +166,9 @@ a:not([href]):hover {
   color: inherit;
   text-decoration: none;
 }
+.small{
+  color: #008577;
+}
 
 pre,
 code,
@@ -2460,13 +2463,13 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #008577;
+  border-color: #008577;
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  background-color: #077f73;
+  border-color: #077f73;
 }
 .btn-primary:focus, .btn-primary.focus {
   color: #fff;
@@ -10024,6 +10027,7 @@ body {
   min-height: 100vh;
 }
 #layoutAuthentication #layoutAuthentication_content {
+  background-color: #008577;
   min-width: 0;
   flex-grow: 1;
 }

@@ -11,9 +11,9 @@ if(isset($_GET['id']) and isset( $_GET['session']) and isset($_GET['coursecode']
 }
 
 ?>
-<div class="container-fluid">
+<div class="container-fluid p-4">
 <?php while($row = mysqli_fetch_assoc($cls)) {?>
-    <div class="card">
+    <div class="card p-1">
               <div class="card h-100">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">

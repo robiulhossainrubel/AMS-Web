@@ -17,7 +17,7 @@ if(isset($_POST['login'])){
 
 <?php include_once("include/head.php"); ?>
 
-    <body class="bg-primary">
+    <body>
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -49,7 +49,7 @@ if(isset($_POST['login'])){
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="small"><a href="register.php">Need an account? Sign up!</a></div>
+                                        <div ><a class="small" href="register.php">Need an account? Sign up!</a></div>
                                     </div>
                                 </div>
                             </div>
