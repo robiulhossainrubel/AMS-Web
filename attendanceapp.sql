@@ -80,10 +80,10 @@ INSERT INTO `2018-2019` (`id`, `Roll`, `Name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin_info`
+-- Table structure for table `teacher_info`
 --
 
-CREATE TABLE `admin_info` (
+CREATE TABLE `teacher_info` (
   `id` int(100) NOT NULL,
   `admin_email` varchar(250) NOT NULL,
   `admin_name` text NOT NULL,
@@ -91,10 +91,10 @@ CREATE TABLE `admin_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `admin_info`
+-- Dumping data for table `teacher_info`
 --
 
-INSERT INTO `admin_info` (`id`, `admin_email`, `admin_name`, `admin_pass`) VALUES
+INSERT INTO `teacher_info` (`id`, `admin_email`, `admin_name`, `admin_pass`) VALUES
 (1, 'admin@gmail.com', 'Rubel', '1234');
 
 -- --------------------------------------------------------

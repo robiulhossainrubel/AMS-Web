@@ -16,7 +16,7 @@ class DBHelper {
     public function adminLogin($data) {
         $email = $data["email"];
         $password = $data["pass"];
-        $sql = "SELECT * FROM admin_info WHERE email='$email' && pass='$password'";
+        $sql = "SELECT * FROM teacher_info WHERE email='$email' && pass='$password'";
         if(mysqli_query($this->con,$sql)){
 			$info = mysqli_query($this->con,$sql);
 			if($info){
@@ -33,7 +33,7 @@ class DBHelper {
 		}
     }
     public function isUserExist($email){
-        $sql = "SELECT * FROM admin_info WHERE email='$email'";
+        $sql = "SELECT * FROM teacher_info WHERE email='$email'";
         if(mysqli_query($this->con,$sql)){
             $info = mysqli_query($this->con,$sql);
             return $info;
@@ -51,7 +51,7 @@ class DBHelper {
             return "Email Already Used";
         }else{
             //$password = md5($password);
-            $sql = "INSERT INTO admin_info(email,name,department,pass) VALUES('$email','$name','$department','$password')";
+            $sql = "INSERT INTO teacher_info(email,name,department,pass) VALUES('$email','$name','$department','$password')";
             if(mysqli_query($this->con,$sql)){
                 header("location:DashBoard.php");
 				session_start();
