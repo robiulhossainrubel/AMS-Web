@@ -67,7 +67,7 @@ if (isset($_GET['session']) and isset($_GET['coursecode'])) {
     $coursecode = $_GET['coursecode'];
 }
 
-$tbl_name = $coursecode.$session;
+$tbl_name = $_COOKIE['department'].$coursecode . $session.$_COOKIE['email'];
 
 $pdf = new PDF();
 $pdf->AliasNbPages();
@@ -83,5 +83,5 @@ while($row = mysqli_fetch_assoc($result)){
 }
 $pdf->custom($session,$coursecode,$ct);
 $pdf->BasicTable($header,$std_info);
-$pdf->Output('D',$tbl_name.'.pdf');
+$pdf->Output('D',$coursecode.'-'.$session.'.pdf');
 ?>

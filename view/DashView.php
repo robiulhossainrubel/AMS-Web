@@ -7,7 +7,7 @@ if(isset($_GET['id']) and isset( $_GET['session']) and isset($_GET['coursecode']
     $session = $_GET['session'];
     $coursecode = $_GET['coursecode'];
     $msg = $obj->deleteClass($id);
-    $msg2 = $obj->dropTable($coursecode,$session);
+    $msg2 = $obj->dropTable($coursecode,$session,$_COOKIE['email'],$_COOKIE['department']);
 }
 
 ?>

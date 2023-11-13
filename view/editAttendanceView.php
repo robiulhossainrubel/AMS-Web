@@ -5,7 +5,7 @@ $tbl_name = "";
 if (isset($_GET['session']) and isset($_GET['coursecode'])) {
     $session = $_GET['session'];
     $coursecode = $_GET['coursecode'];
-    $tbl_name = $coursecode . $session;
+    $tbl_name = $_COOKIE['department'].$coursecode . $session.$_COOKIE['email'];
     $result = $obj->viewTableName($tbl_name);
     $info = $obj->viewTable($tbl_name);
     $cl_nm = array();

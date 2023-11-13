@@ -86,8 +86,8 @@ class DBHelper {
             return $cls;
         }
     }
-    public function transferStudent($coursecode,$session,$department) {
-        $tbl_name = $coursecode.$session;
+    public function transferStudent($coursecode,$session,$email,$department) {
+        $tbl_name = $department.$coursecode.$session.$email;
         $sql = "INSERT INTO `$tbl_name` (roll,name) SELECT roll,name FROM `students` WHERE department='$department' && session='$session'";
         if(mysqli_query($this->con,$sql)) {
             return "Datas transfer Successfully";
@@ -101,8 +101,8 @@ class DBHelper {
             return "Class Deleted Successfully";
         }
     }
-    public function createTable($coursecode,$session) {
-        $tbl_name = $coursecode.$session;
+    public function createTable($coursecode,$session,$email,$department) {
+        $tbl_name = $department.$coursecode.$session.$email;
         $sql = "CREATE TABLE `$tbl_name` (
             `id` INT(100) NOT NULL AUTO_INCREMENT , 
             `Roll` INT(100) NOT NULL , 
@@ -120,8 +120,8 @@ class DBHelper {
             return "Table Added Successfully";
         }
     }
-    public function dropTable($coursescode,$session) {
-        $tbl_name = $coursescode.$session;
+    public function dropTable($coursescode,$session, $email,$department) {
+        $tbl_name = $department.$coursescode.$session.$email;
         $sql = "DROP TABLE `$tbl_name`";
         if(mysqli_query($this->con,$sql)) {
             return "Class Deleted Successfully";

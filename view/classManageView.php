@@ -5,17 +5,6 @@ $tbl_name = "";
 if (isset($_GET['session']) and isset($_GET['coursecode'])) {
     $session = $_GET['session'];
     $coursecode = $_GET['coursecode'];
-    $tbl_name = $coursecode . $session;
-    $result = $obj->viewTableName($tbl_name);
-    $result2 = $obj->viewTable($tbl_name);
-
-
-    $cl_nm = array();
-    while ($data = mysqli_fetch_assoc($result)) {
-        $cl_nm[] = $data['cl_mn'];
-    }
-    $cl_nm_sz = count($cl_nm);
-
 }
 ?>
 
