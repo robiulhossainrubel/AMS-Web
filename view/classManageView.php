@@ -25,7 +25,7 @@ if (isset($_GET['session']) and isset($_GET['coursecode'])) {
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <a href="studentActivity.php?session=<?php echo $session; ?>&coursecode=<?php echo $coursecode; ?>">
+                      <a href="takeAttendance.php?session=<?php echo $session; ?>&coursecode=<?php echo $coursecode; ?>">
                       <div class="text-xs font-weight-bold text mb-1">Take Attendance</div>
                       </a>
                       <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo "";?></div>

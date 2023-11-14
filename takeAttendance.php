@@ -1,5 +1,5 @@
 <?php 
-    $view = "studentActivityView";
+    $view = "takeAttendanceView";
     include("template.php");
 
 ?>
