@@ -25,7 +25,11 @@ if(isset($_POST['login'])){
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+                                    <div class="card-header">
+                                        <div class="text-center"><img src="./image/tick.png" height="100px" width="100px"></div>
+                                        <h2 class="text-center font-weight-bold my-1" style="color:#008577;">Welcome To AMS</h2>
+                                        <p class="text-center font-weight-light my-1">Login To Continue</p>
+                                    </div>
                                     <div class="card-body">
                                         <form action="" method="post">
                                             <div class="form-group">
@@ -61,12 +65,7 @@ if(isset($_POST['login'])){
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
+                            <div class="text-center">Copyright &copy; AMS <?php echo $todaysDate = date("Y"); ?></div>
                         </div>
                     </div>
                 </footer>
