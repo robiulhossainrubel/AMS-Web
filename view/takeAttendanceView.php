@@ -15,23 +15,26 @@ if (isset($_GET['session']) and isset($_GET['coursecode'])) {
         $cl_nm[] = $data['cl_mn'];
     }
     $cl_nm_sz = count($cl_nm);
-
 }
+
 if (isset($_POST['save'])) {
     $dateString = $_POST['date'];
     $date = date("d/m/Y", strtotime($dateString));
-    $msg2 = $obj->addColumn($tbl_name, $date);
-    $rollNo = $_POST['rollNo'];
-    $check = $_POST['check'];
-    $N = count($rollNo);
+    if(in_array($date, $cl_nm)) {
+        $msg = 'Attendance Already Taken '.$date;
+    }else{
+        $msg = $obj->addColumn($tbl_name, $date);
+        $rollNo = $_POST['rollNo'];
+        $check = $_POST['check'];
+        $N = count($rollNo);
 
-    for ($i = 0; $i < $N; $i++) {
-        $rollNo[$i];
-        if (isset($check[$i])) {
-            $msg = $obj->takeAttendance($tbl_name, $date, $check[$i]);
+        for ($i = 0; $i < $N; $i++) {
+            $rollNo[$i];
+            if (isset($check[$i])) {
+                $msg = $obj->takeAttendance($tbl_name, $date, $check[$i]);
+            }
         }
     }
-
 }
 ?>
 <div class="container-fluid" id="container-wrapper">
@@ -44,6 +47,7 @@ if (isset($_POST['save'])) {
             <li class="breadcrumb-item active" aria-current="page">All Student in Class</li>
         </ol>
     </div>
+    <p class="text-success"><?php if(isset($msg)) echo $msg; ?></p>
     <div class="row">
         <div class="col-lg-12">
             <form action="" method="post">
