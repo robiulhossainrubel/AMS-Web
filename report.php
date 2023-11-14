@@ -30,7 +30,7 @@ function Header()
 
     // Table Header
     $this->Cell(20,5.7,"Roll",1,0,'C');
-    $this->Cell(40,5.7,"Name",1,0,'C');
+    $this->Cell(60,5.7,"Name",1,0,'C');
     $N = count($this->t);
     for ($i = 11; $i < $N; $i++){
         $this->Cell(10,5.7,substr($this->t[$i], 0, 5),1,0,'C');
@@ -54,7 +54,7 @@ function BasicTable($header, $data)
     foreach($data as $row)
     {
         $this->Cell(20,5,$row['Roll'],1,0,'C');
-        $this->Cell(40,5,$row['Name'],1,0,'C');
+        $this->Cell(60,5,$row['Name'],1,0,'C');
         for($i = 11;$i<$N;$i++){
             $this->Cell(10,5,$row[$header[$i]],1,0,'C');
         }
