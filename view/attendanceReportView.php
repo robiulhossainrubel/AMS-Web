@@ -77,7 +77,30 @@ if (isset($_GET['session']) and isset($_GET['coursecode'])) {
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <a href="generatePDF.php?session=<?php echo $session; ?>&coursecode=<?php echo $coursecode; ?>">
-                            <div class="text-xs font-weight-bold text mb-1">Generate PDF</div>
+                            <div class="text-xs font-weight-bold text mb-1">Generate Final Sheet PDF</div>
+                        </a>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            <?php echo ""; ?>
+                        </div>
+                        <div class="mt-2 mb-0 text-muted text-xs">
+                            <!-- <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+                        <span>Since yesterday</span> -->
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-file-pdf fa-3x text-danger"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <a href="report.php?session=<?php echo $session; ?>&coursecode=<?php echo $coursecode; ?>">
+                            <div class="text-xs font-weight-bold text mb-1">Generate Attendance Sheet PDF</div>
                         </a>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
                             <?php echo ""; ?>
