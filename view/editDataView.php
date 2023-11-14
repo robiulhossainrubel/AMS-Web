@@ -29,7 +29,7 @@ if(isset($_POST['change'])){
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <div class="card mb-4">
+            <div class="card mb-4 p-2">
             <span><?php echo 'Roll: '.$result['Roll']; ?></span><br>
                     <span><?php echo 'Name: '.$result['Name']; ?></span><br>
                 <form class="form" method="post">

@@ -60,7 +60,7 @@ if (isset($_POST['save'])) {
                                 <h6 class="m-0 font-weight-bold text-danger">Note: <i>Click on the checkboxes besides
                                         each student to take attendance!</i></h6>
                             </div>
-                            <div class="form-group row mb-3">
+                            <div class="form-group row mb-3 p-2">
                                 <div class="col-xl-6">
                                     <label class="form-control-label">Select Date<span
                                             class="text-danger ml-2">*</span></label>

@@ -72,61 +72,64 @@ if (isset($_GET['session']) and isset($_GET['coursecode'])) {
     </div>
 
     <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card h-100">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <a href="generatePDF.php?session=<?php echo $session; ?>&coursecode=<?php echo $coursecode; ?>">
-                      <div class="text-xs font-weight-bold text mb-1">Generate PDF</div></a>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "";?></div>
-                      <div class="mt-2 mb-0 text-muted text-xs">
-                        <!-- <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+                        <a href="generatePDF.php?session=<?php echo $session; ?>&coursecode=<?php echo $coursecode; ?>">
+                            <div class="text-xs font-weight-bold text mb-1">Generate PDF</div>
+                        </a>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            <?php echo ""; ?>
+                        </div>
+                        <div class="mt-2 mb-0 text-muted text-xs">
+                            <!-- <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
                         <span>Since yesterday</span> -->
-                      </div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-file-pdf fa-3x text-danger"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-    <div class="row">
-        <div class="col-lg-12">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card mb-4">
-                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">All Student in <?php echo ""; ?> Class
-                                </h6>
-                                
-                            </div>
-                            <div class="table-responsive p-3">
-                                <table class="table align-items-center table-flush table-hover" id="example">
-                                    <thead class="thead-light">
-                                        <tr>
-                                            <?php for ($i = 1; $i < $cl_nm_sz; $i++) { ?>
-                                            <th>
-                                                <?php echo $cl_nm[$i]; ?>
-                                            </th>
-                                            <?php } ?>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach($std_info as $dataa) { ?>
-                                        <tr>
-                                            <?php for ($i = 1; $i < $cl_nm_sz; $i++) {
-                                                echo '<td>' . $dataa[$cl_nm[$i]] . '</td>';
-                                                //echo '<td>'.$dataa[$cl_nm[$i]].'<a href="'.'editAttendance.php?tablename='.$tbl_name.'&colname='.$cl_nm[$i].'">Update</a>';
-                                             }
-                                            ?>
-                                            <td>
-                                        </tr>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
-                            </div>
                         </div>
                     </div>
+                    <div class="col-auto">
+                        <i class="fas fa-file-pdf fa-3x text-danger"></i>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table mr-1"></i>
+            All Students From Session
+            <?php echo $session ?>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <table class="table align-items-center table-flush table-hover" id="tableID" width="100%"
+                    cellspacing="0">
+                    <thead class="thead-light">
+                        <tr>
+                            <?php for ($i = 1; $i < $cl_nm_sz; $i++) { ?>
+                                <th>
+                                    <?php echo $cl_nm[$i]; ?>
+                                </th>
+                            <?php } ?>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($std_info as $dataa) { ?>
+                            <tr>
+                                <?php for ($i = 1; $i < $cl_nm_sz; $i++) {
+                                    echo '<td>' . $dataa[$cl_nm[$i]] . '</td>';
+                                    //echo '<td>'.$dataa[$cl_nm[$i]].'<a href="'.'editAttendance.php?tablename='.$tbl_name.'&colname='.$cl_nm[$i].'">Update</a>';
+                                }
+                                ?>
+                                <td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
