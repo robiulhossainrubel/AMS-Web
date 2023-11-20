@@ -18,7 +18,7 @@ if (isset($_GET['session']) and isset($_GET['coursecode'])) {
 
 <div class="container-fluid" id="container-wrapper">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Edit Report (Today's Date :
+        <h1 class="h3 mb-0 text-gray-800">Class Test Mark (Today's Date :
             <?php echo $todaysDate = date("m-d-Y"); ?>)
         </h1>
         <ol class="breadcrumb">

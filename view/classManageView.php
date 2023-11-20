@@ -11,7 +11,7 @@ if (isset($_GET['session']) and isset($_GET['coursecode'])) {
 
 <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Class Teacher Dashboard</h1>
+            <h1 class="h3 mb-0 text-gray-800">Class Dashboard</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Manage Class</li>
@@ -73,7 +73,7 @@ if (isset($_GET['session']) and isset($_GET['coursecode'])) {
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                     <a href="editAttendance.php?session=<?php echo $session; ?>&coursecode=<?php echo $coursecode; ?>">
-                      <div class="text-xs font-weight-bold text-uppercase mb-1">Edit Attendance</div>
+                      <div class="text-xs font-weight-bold text mb-1">Edit Attendance</div>
                     </a>
                       <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "";?></div>
                       <div class="mt-2 mb-0 text-muted text-xs">

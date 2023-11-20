@@ -25,7 +25,7 @@ function Header()
     $this->Cell(30,10,'Course Title: '.$this->ct,0,0,'R');
     $this->Ln(5);
     $this->Cell(130);
-    $this->Cell(30,10,'Attendance Sheet',0,0,'C');
+    $this->Cell(30,10,'Student Attendance Sheet',0,0,'C');
     $this->Ln(10);
 
     // Table Header
