@@ -77,7 +77,7 @@ if (isset($_GET['session']) and isset($_GET['coursecode'])) {
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <a href="generatePDF.php?session=<?php echo $session; ?>&coursecode=<?php echo $coursecode; ?>">
-                            <div class="text-xs font-weight-bold text mb-1">Generate Final Sheet PDF</div>
+                            <div class="text-xs font-weight-bold text mb-1">Generate CA Mark Sheet PDF</div>
                         </a>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
                             <?php echo ""; ?>

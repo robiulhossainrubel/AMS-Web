@@ -28,17 +28,18 @@
                 return $data;
             }
         }
-        public function viewTableName($tbl_name) {
+        public function viewTableName($tbl_name,$col) {
             $sql = "SELECT column_name AS cl_mn
             FROM information_schema.columns 
             WHERE table_name = '$tbl_name'";
-            $info = array();
             if(mysqli_query($this->con,$sql)) {
                 $data = mysqli_query($this->con,$sql);
                 while($row = mysqli_fetch_assoc($data)) {
-                    $info[] = $row['cl_mn'];
+                    if($col == $row['cl_mn']) {
+                        return true;
+                    }
                 }
-                return $info;
+                return false;
             }
         }
         public function addColumn($tbl_name,$date) {

@@ -89,5 +89,5 @@ $pdf->AddPage('P','A4');
 $pdf->SetFont('Times','',12);
 
 $pdf->BasicTable($header,$std_info);
-$pdf->Output('D',$coursecode.'-'.$session.'-'.'final'.'.pdf');
+$pdf->Output('D',$coursecode.'-'.$session.'-'.'CA-Mark'.'.pdf');
 ?>

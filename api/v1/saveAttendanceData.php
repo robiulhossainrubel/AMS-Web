@@ -4,10 +4,10 @@ $db = new DBOperation();
 $respose = array();
 if($_SERVER['REQUEST_METHOD']=='POST'){
     if(isset($_POST['tblname']) && isset($_POST['colname'])&& isset($_POST['data'])){
-        $info = $db->viewTableName($_POST['tblname']);
-        if(in_array($_POST['colname'],$info)){
+        $info = $db->viewTableName($_POST['tblname'],$_POST['colname']);
+        if($info){
             $respose['error']= true;
-            $respose['message']= 'Attendance Already Taken';
+            $respose['message']= 'You can\'t take Attendance '.$_POST['colname'].' already taken';
         }else{
             $msg = $db->addColumn($_POST['tblname'], $_POST['colname']);
             if ($msg == '1') {

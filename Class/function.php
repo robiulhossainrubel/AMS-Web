@@ -107,14 +107,14 @@ class DBHelper {
             `id` INT(100) NOT NULL AUTO_INCREMENT , 
             `Roll` INT(100) NOT NULL , 
             `Name` TEXT NOT NULL , 
-            `CT1` INT(2) NOT NULL , 
-            `CT2` INT(2) NOT NULL , 
-            `CT3` INT(2) NOT NULL , 
-            `Percentage` INT(3) NOT NULL ,
-            `Mark` INT(2) NOT NULL ,
-            `Best1` INT(2) NOT NULL ,
-            `Best2` INT(2) NOT NULL ,
-            `Total` INT(2) NOT NULL ,
+            `CT1` INT(2) DEFAULT 0 , 
+            `CT2` INT(2) DEFAULT 0 , 
+            `CT3` INT(2) DEFAULT 0 , 
+            `Percentage` INT(3) DEFAULT 0 ,
+            `Mark` INT(2) DEFAULT 0 ,
+            `Best1` INT(2) DEFAULT 0 ,
+            `Best2` INT(2) DEFAULT 0 ,
+            `Total` INT(2) DEFAULT 0 ,
             PRIMARY KEY (`id`))";
         if(mysqli_query($this->con,$sql)) {
             return "Table Added Successfully";
